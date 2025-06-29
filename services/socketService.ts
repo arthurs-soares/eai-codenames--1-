@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 // Substitua esta URL pela URL do seu servidor.
 // Para testes locais: 'http://localhost:3001'
 // Para jogar com amigos pela internet: 'http://SEU_IP_PÚBLICO:3001'
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = 'https://eai-codenames-1.onrender.com';
 
 export const socket = io(SERVER_URL, {
     // Forçar WebSocket para evitar erros de polling (XHR poll error)
