@@ -1,0 +1,6 @@
+
+{
+  "name": "EAI CODENAMES",
+  "description": "Um jogo de associação de palavras para a web semelhante ao Codenames, onde as palavras são geradas pela IA Gemini. Duas equipes competem para identificar seus agentes, guiadas por pistas de seu mestre-espião, enquanto evitam o assassino.",
+  "requestFramePermissions": []
+}
