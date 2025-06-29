@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 // !! AÇÃO NECESSÁRIA !!
 // Substitua esta URL pela URL PÚBLICA do seu servidor no Render.
 // Exemplo: 'https://eai-codenames-server.onrender.com'
-const SERVER_URL = 'PASTE_YOUR_RENDER_URL_HERE';
+const SERVER_URL = 'https://eai-codenames-1.onrender.com';
 
 export const socket = io(SERVER_URL, {
     transports: ['websocket'],
