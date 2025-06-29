@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const express = require('express');
 const http = require('http');
@@ -356,51 +355,4 @@ io.on('connection', (socket) => {
             try {
                 let words;
                 if (game.customWords && game.customWords.length === WORDS_TO_GENERATE) {
-                    words = game.customWords;
-                    console.log(`[Game ${gameId}]: Iniciando com palavras personalizadas.`);
-                } else {
-                    console.log(`[Game ${gameId}]: Buscando palavras com temas: ${game.themes || 'nenhum'}`);
-                    words = await fetchCodenamesWords(game.themes);
-                }
-                const startedGameState = startGame(game, words);
-                manageTurnCycle(gameId, startedGameState);
-            } catch (error) {
-                console.error(`[Game ${gameId}]: Falha ao iniciar o jogo:`, error);
-                io.to(gameId).emit('error', 'Falha ao buscar palavras para iniciar o jogo. Tente novamente.');
-            }
-        }
-    });
-
-    socket.on('cardClick', ({ gameId, cardIndex }) => {
-        const currentGame = games[gameId];
-        if (currentGame && !currentGame.isGameOver) {
-            const { newState, turnChanged } = handleCardClickLogic(currentGame, cardIndex);
-            if (turnChanged || newState.isGameOver) {
-                manageTurnCycle(gameId, newState);
-            } else {
-                games[gameId] = newState;
-                io.to(gameId).emit('updateState', newState);
-            }
-        }
-    });
-
-    socket.on('endTurn', ({ gameId }) => {
-        const currentGame = games[gameId];
-        if (currentGame && !currentGame.isGameOver) {
-            const nextState = handleEndTurnLogic(currentGame);
-            manageTurnCycle(gameId, nextState);
-        }
-    });
-
-    socket.on('disconnect', () => {
-        console.log(`Cliente desconectado: ${socket.id}`);
-        // Em um app real, você implementaria a lógica para remover o jogador
-        // das salas de jogo quando ele se desconecta.
-    });
-});
-
-const PORT = process.env.PORT || 3001;
-server.listen(PORT, () => {
-    console.log(`Servidor EAI CODENAMES rodando na porta ${PORT}`);
-    console.log('Aguardando conexões...');
-});
+                    words = game
